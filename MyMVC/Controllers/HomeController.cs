@@ -12,10 +12,12 @@ namespace MyMVC.Controllers
         {
             return View();
         }
-
-        public ActionResult About()
+        
+        public ActionResult About(string message, string format)
         {
-            ViewBag.Message = "Your application description page.";
+            if (message != "secret")
+                return new HttpStatusCodeResult(403);
+            ViewBag.Message = message;
 
             return View();
         }
